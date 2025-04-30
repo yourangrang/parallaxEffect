@@ -1,0 +1,65 @@
+/* 한번에 나타나기 */
+/* .content_item{
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease;
+}
+
+.content_item.show{
+  opacity: 1;
+  transform: translateY(0);
+} */
+
+/* 개별적으로 나타나기 */
+
+.content_item .content_item_num {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: all 1s .1s cubic-bezier(0, 0.66, 0.38, 1.01);
+}
+.content_item .content_item_title {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s .3s cubic-bezier(0, 0.66, 0.38, 1.01);
+}
+.content_item .content_item_imgWrap {
+  opacity: 0;
+  transform: translateY(200px) rotate(30deg) skew(20deg);
+  transition: all 1s .6s cubic-bezier(0, 0.66, 0.38, 1.01);
+}
+.content_item .content_item_desc {
+  opacity: 0;
+  transform: translateX(-200px);
+  transition: all 1s .9s cubic-bezier(0, 0.66, 0.38, 1.01);
+}
+
+.content_item.show .content_item_num {
+  opacity: 0.07;
+  transform: translateY(0);
+}
+.content_item.show .content_item_title {
+  opacity: 1;
+  transform: translateX(0);
+}
+.content_item.show .content_item_imgWrap {
+  opacity: 1;
+  transform: translateY(0) rotate(0) skew(0);
+}
+.content_item.show .content_item_desc {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+  /* 짝수 영역 */
+  .content_item:nth-child(even) .content_item_title {
+    transform: translateX(100px) !important;
+}
+.content_item:nth-child(even).show .content_item_title {
+    transform: translateX(0) !important;
+}
+.content_item:nth-child(even) .content_item_desc {
+    transform: translateX(200px) !important;
+}
+.content_item:nth-child(even).show .content_item_desc {
+    transform: translateX(0) !important;
+}

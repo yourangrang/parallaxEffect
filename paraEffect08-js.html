@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parallax Layout</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./parallaxLayout.css">
+
+  <!-- fontAsome -->
+  <script src="https://kit.fontawesome.com/139e87cb0c.js" crossorigin="anonymous"></script>
+
+  <style>
+    /* reveal */
+    .reveal>div,
+    .reveal>span {
+      opacity: 0;
+    }
+
+    .reveal.show>div,
+    .reveal.show>span {
+      animation: opacity 1000ms linear forwards;
+    }
+
+    .reveal {
+      position: relative;
+    }
+
+    .reveal::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      z-index: 100;
+      background-color: #fff;
+    }
+
+    .reveal.reveal-two::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 0;
+      height: 100%;
+      z-index: 100;
+      background-color: orange;
+    }
+
+    .reveal.show::before {
+      animation: reveal 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.reveal-RTL.show::before {
+      animation: reveal-RTL 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.reveal-TTB.show::before {
+      animation: reveal-TTB 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.reveal-BTT.show::before {
+      animation: reveal-BTT 1000ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.show::after {
+      animation: reveal 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.reveal-RTL.show::after {
+      animation: reveal-RTL 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.reveal-TTB.show::after {
+      animation: reveal-TTB 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    .reveal.reveal-BTT.show::after {
+      animation: reveal-BTT 1000ms 300ms cubic-bezier(0.77, 0, 0.18, 1);
+    }
+
+    @keyframes opacity {
+      0% {
+        opacity: 0;
+      }
+
+      60% {
+        opacity: 0;
+      }
+
+      70% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes reveal {
+      0% {
+        width: 0;
+        left: 0;
+      }
+
+      50% {
+        width: 100%;
+        left: 0;
+      }
+
+      80% {
+        width: 100%;
+        left: 0;
+      }
+
+      100% {
+        width: 0;
+        left: 100%;
+      }
+    }
+
+    @keyframes reveal-RTL {
+      0% {
+        width: 0;
+        right: 0;
+      }
+
+      50% {
+        width: 100%;
+        right: 0;
+      }
+
+      80% {
+        width: 100%;
+        right: 0;
+      }
+
+      100% {
+        width: 0;
+        right: 100%;
+      }
+    }
+
+    @keyframes reveal-TTB {
+      0% {
+        width: 100%;
+        height: 0;
+        top: 0;
+      }
+
+      50% {
+        width: 100%;
+        height: 100%;
+        top: 0;
+      }
+
+      80% {
+        width: 100%;
+        height: 100%;
+        top: 0;
+      }
+
+      100% {
+        width: 100%;
+        height: 0;
+        top: 100%;
+      }
+    }
+
+    @keyframes reveal-BTT {
+      0% {
+        width: 100%;
+        height: 0;
+        top: auto;
+        bottom: 0;
+      }
+
+      50% {
+        width: 100%;
+        height: 100%;
+        top: auto;
+        bottom: 0;
+      }
+
+      80% {
+        width: 100%;
+        height: 100%;
+        top: auto;
+        bottom: 0;
+      }
+
+      100% {
+        width: 100%;
+        height: 0;
+        top: auto;
+        bottom: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body class="parallax">
+  <!-- info -->
+  <div class="paraScroll">scrollTop() : <span>0</span>px</div>
+  <!-- //info -->
+
+  <header id="paraHeader">
+    <h1>Parallax Effect08 - javascript</h1>
+    <p> 패럴랙스 스크롤링 효과 - 리빌 효과</p>
+  </header>
+  <!-- //header -->
+
+  <!-- nav -->
+  <nav class="paraNav4">
+    <ul>
+      <li class="active"><a href="#section1">S1</a></li>
+      <li><a href="#section2">S2</a></li>
+      <li><a href="#section3">S3</a></li>
+      <li><a href="#section4">S4</a></li>
+      <li><a href="#section5">S5</a></li>
+      <li><a href="#section6">S6</a></li>
+      <li><a href="#section7">S7</a></li>
+      <li><a href="#section8">S8</a></li>
+      <li><a href="#section9">S9</a></li>
+    </ul>
+  </nav>
+  <!-- //nav -->
+
+  <main id="paraCont">
+    <section id="section1" class="content_item">
+      <span class="content_item_num">01</span>
+      <h2 class="content_item_title">Section1</h2>
+      <figure class="content_item_imgWrap reveal">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal" data-delay="500"><span>높은 목표를 세우고, 스스로 채찍질 한다.</span></p>
+    </section>
+    <!-- //section1 -->
+
+    <section id="section2" class="content_item">
+      <span class="content_item_num">02</span>
+      <h2 class="content_item_title">Section2</h2>
+      <figure class="content_item_imgWrap reveal reveal-RTL">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-RTL" data-delay="500"><span>결과도 중요하지만, 과정을 더 중요하게 생각한다.</span></p>
+    </section>
+    <!-- //section2 -->
+
+    <section id="section3" class="content_item">
+      <span class="content_item_num">03</span>
+      <h2 class="content_item_title">Section3</h2>
+      <figure class="content_item_imgWrap reveal reveal-TTB">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-TTB" data-delay="500"><span>매 순간에 최선을 다하고, 끊임없이 변화한다.</span></p>
+    </section>
+    <!-- //section3 -->
+
+    <section id="section4" class="content_item">
+      <span class="content_item_num">04</span>
+      <h2 class="content_item_title">Section4</h2>
+      <figure class="content_item_imgWrap reveal reveal-BTT">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-BTT" data-delay="500"><span>모든지 기본을 중요하게 생각하고 행동한다.</span></p>
+    </section>
+    <!-- //section4 -->
+
+    <section id="section5" class="content_item">
+      <span class="content_item_num">05</span>
+      <h2 class="content_item_title">Section5</h2>
+      <figure class="content_item_imgWrap reveal reveal-two">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-two" data-delay="500"><span>열정을 잃지 않고 실패에서 실패로 걸어가는 것이 성공이다.</span></p>
+    </section>
+    <!-- //section5 -->
+
+    <section id="section6" class="content_item">
+      <span class="content_item_num">06</span>
+      <h2 class="content_item_title">Section6</h2>
+      <figure class="content_item_imgWrap reveal reveal-two reveal-RTL">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-two reveal-RTL" data-delay="500"><span>천 마디 말보단 하나의 행동이 더 값지다.</span>
+      </p>
+    </section>
+    <!-- //section6 -->
+
+    <section id="section7" class="content_item">
+      <span class="content_item_num">07</span>
+      <h2 class="content_item_title">Section7</h2>
+      <figure class="content_item_imgWrap reveal reveal-two reveal-TTB">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-two reveal-TTB" data-delay="500"><span>조그만 성공에 만족하지 않으며, 방심을
+          경계한다.</span></p>
+    </section>
+    <!-- //section7 -->
+
+    <section id="section8" class="content_item">
+      <span class="content_item_num">08</span>
+      <h2 class="content_item_title">Section8</h2>
+      <figure class="content_item_imgWrap reveal reveal-two reveal-BTT">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-two reveal-BTT" data-delay="500"><span>나는 내가 더 노력할수록 운이 더 좋아진다는 걸
+          발견했다.</span></p>
+    </section>
+    <!-- //section8 -->
+
+    <section id="section9" class="content_item">
+      <span class="content_item_num">09</span>
+      <h2 class="content_item_title">Section9</h2>
+      <figure class="content_item_imgWrap reveal reveal-two reveal-BTT">
+        <div class="content_item_img"></div>
+      </figure>
+      <p class="content_item_desc reveal reveal-two reveal-RTL" data-delay="500"><span>꿈이 있다면, 그 꿈을 잡고 절대 놓아주지마라.</span>
+      </p>
+    </section>
+    <!-- //section9 -->
+  </main>
+  <!-- //main -->
+
+  <footer id="paraFooter">
+    <h2>Parallax <span>Scrolling <i class="fa-solid fa-burst"></i></span>
+    </h2>
+    <div class="footerInfo">
+      <h3>제이쿼리</h3>
+      <ul>
+        <li><a href="index.html">1</a></li>
+        <li><a href="paraEffect02-jquery.html">2</a></li>
+        <li><a href="paraEffect03-jquery.html">3</a></li>
+        <li><a href="paraEffect04-jquery.html">4</a></li>
+        <li><a href="paraEffect05-jquery.html">5</a></li>
+        <li><a href="paraEffect06-jquery.html">6</a></li>
+        <li><a href="paraEffect07-jquery.html">7</a></li>
+        <li><a href="paraEffect08-jquery.html">8</a></li>
+      </ul>
+    </div>
+    <div class="footerInfo">
+      <h3>자바스크립트</h3>
+      <ul>
+        <li><a href="paraEffect01-js.html">1</a></li>
+        <li><a href="paraEffect02-js.html">2</a></li>
+        <li><a href="paraEffect03-js.html">3</a></li>
+        <li><a href="paraEffect04-js.html">4</a></li>
+        <li><a href="paraEffect05-js.html">5</a></li>
+        <li><a href="paraEffect06-js.html">6</a></li>
+        <li><a href="paraEffect07-js.html">7</a></li>
+        <li class="active"><a href="paraEffect08-js.html">8</a></li>
+      </ul>
+    </div>
+  </footer>
+  <!-- //footer -->
+
+  <!-- script -->
+  <script>
+    const scrollReveal = function () {
+      let scrollTop = (window.pageYOffset || document.documentElement.scrollTop || window.scrollY) + window.innerHeight / 3;
+      const reveal = document.querySelectorAll(".reveal");
+
+      reveal.forEach(el => {
+        const revealDelay = el.dataset.delay;
+
+        // if( scrollTop > el.parentElement.offsetTop ){
+        //     el.classList.add("show");
+        // }
+
+        if (scrollTop > el.parentElement.offsetTop) {
+          if (revealDelay == undefined) {
+            el.classList.add("show");
+          } else {
+            setTimeout(() => {
+              el.classList.add("show");
+            }, revealDelay);
+          }
+        }
+      })
+    }
+
+    window.addEventListener("scroll", scrollReveal);
+  </script>
+</body>
+
+</html>
